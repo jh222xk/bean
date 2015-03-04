@@ -24,17 +24,30 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view></div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+    <div layout="column" class="md-primary" layout-fill>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <a ui-sref="home"><span>Bean</span></a>
+          <!-- fill up the space between left and right area -->
+          <span flex></span>
+          <md-button>
+            Right Bar Button
+          </md-button>
+        </div>
+      </md-toolbar>
+      <md-content>
+        <div ui-view></div>
+      </md-content>
+    </div>
+
+    <div ng-if='place.reviews.length' class="reviews">
+      <h2>Reviews</h2>
+      <div ng-repeat="review in place.reviews">
+        {{review.description}} - {{review.rating}}
+      </div>
+    </div>
+
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->

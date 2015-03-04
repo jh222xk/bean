@@ -1,0 +1,15 @@
+<a ui-sref="place({ id: 1 })">
+  <md-card>
+    <h1 class="headline">{{item.place.name}}</h1>
+    <p>{{item.place.description}}</p>
+
+    <div layout="row">
+      <span flex></span>
+      <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/action/svg/production/ic_grade_24px.svg">
+      </md-icon>
+      <span>{{item.place.rating | number:1}}</span>
+    </div>
+
+  </md-card>
+</a>
+

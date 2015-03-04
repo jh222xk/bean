@@ -1,0 +1,21 @@
+place {
+  > div {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1032px;
+  }
+  md-card {
+    background-color: #B18965;
+    max-width: 500px;
+    padding: 8px;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  md-icon {
+    color: #442419;
+    margin: 0;
+  }
+
+}
