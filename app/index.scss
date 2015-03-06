@@ -1,5 +1,12 @@
+$primaryBG: #388E3C;
+
+html {
+  background-color: #D5C1A9;
+}
+
 md-content.md-default-theme {
   background-color: #D5C1A9;
+  height: 100%;
 }
 
 .headline {
@@ -9,6 +16,31 @@ md-content.md-default-theme {
 
 .display1 {
   font-size: 34px;
+}
+
+.page {
+  height: 100vh;
+}
+
+.md-button.md-default-theme.md-primary.md-raised:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-raised:not([disabled]):focus, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):hover, .md-button.md-default-theme.md-primary.md-fab:not([disabled]):focus {
+  ul {
+    background-color: red;
+    opacity: 1;
+  }
+}
+
+.md-fab {
+  animation: fromTop 1s 1;
+  -webkit-animation: fromTop 1s 1;
+}
+
+@keyframes fromTop {
+  0% {
+    transform: translateY(-250px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 // injector

@@ -3,10 +3,11 @@
 
 import Place from './components/place/place.js';
 import PlaceDetail from './components/place-detail/place-detail.js';
+import FabMenu from './components/fab-menu/fab-menu.js';
 //import NavbarCtrl from './components/navbar/navbar.controller';
 
 angular.module('bean', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'restangular', 'ui.router', 'ngMaterial',
-  Place.name, PlaceDetail.name])
+  Place.name, PlaceDetail.name, FabMenu.name])
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
     $stateProvider
       .state('home', {
@@ -23,6 +24,6 @@ angular.module('bean', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'rest
 
     $mdThemingProvider.theme('default')
       .primaryPalette('brown')
-      .accentPalette('orange');
+      .accentPalette('green');
   })
 ;

@@ -25,28 +25,23 @@
     <![endif]-->
 
 
-    <div layout="column" class="md-primary" layout-fill>
+    <div layout="column" class="page md-primary" layout-fill>
       <md-toolbar>
         <div class="md-toolbar-tools">
           <a ui-sref="home"><span>Bean</span></a>
           <!-- fill up the space between left and right area -->
           <span flex></span>
           <md-button>
-            Right Bar Button
+            Logga in
           </md-button>
         </div>
       </md-toolbar>
       <md-content>
         <div ui-view></div>
       </md-content>
+      <fab-menu class="md-fab-menu-bottom-right"></fab-menu>
     </div>
 
-    <div ng-if='place.reviews.length' class="reviews">
-      <h2>Reviews</h2>
-      <div ng-repeat="review in place.reviews">
-        {{review.description}} - {{review.rating}}
-      </div>
-    </div>
 
 
     <!-- build:js(src) scripts/vendor.js -->
