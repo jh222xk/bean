@@ -6,10 +6,21 @@ class Place {
 	constructor(api) {
     this.api = api;
     this.getPlaces();
+
+    navigator.geolocation.getCurrentPosition(location => {
+      this.latitude = location.coords.latitude;
+      this.longitude = location.coords.longitude;
+      this.getPlaces();
+    });
   }
 
   getPlaces() {
-    return this.api.getPlaces().then(places => {
+    if (!this.latitude || !this.longitude) {
+      return;
+    }
+    console.log(this.latitude);
+    console.log(this.longitude);
+    return this.api.getPlaces(this.latitude, this.longitude).then(places => {
       this.places = places.data.results;
       console.log(this.places);
     });
