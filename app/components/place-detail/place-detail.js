@@ -6,8 +6,9 @@ import Auth from '../../scripts/services/auth.js';
 import Review from '../review/review.js';
 
 class PlaceDetail {
-  constructor(api) {
+  constructor(api, auth) {
     this.api = api;
+    this.auth = auth;
     this.getPlace();
   }
 
@@ -18,7 +19,7 @@ class PlaceDetail {
   }
 }
 
-export default angular.module('placeDetail', [CreateReview.name, Auth.name, Review.name])
+export default angular.module('placeDetail', [Auth.name, Review.name, CreateReview.name])
 	.directive('placeDetail', function() {
 		return {
 			templateUrl: 'components/place-detail/place-detail.html',

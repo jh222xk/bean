@@ -39,5 +39,5 @@
     {{item.place.description}}
   </md-content>
   <review reviews="item.place.reviews"></review>
-  <create-review created="item.getPlace()"></create-review>
+  <create-review ng-if="item.auth.currentUser" created="item.getPlace()"></create-review>
 </md-content>
