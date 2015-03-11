@@ -1,0 +1,28 @@
+  <md-toolbar class="md-primary">
+    <h1 class="md-toolbar-tools">
+      Skriv recension
+    </h1>
+  </md-toolbar>
+  <md-content class="md-padding">
+    <form name="reviewForm" ng-submit="reviewForm.$valid && ctrl.createReview(review)" novalidate>
+      <md-input-container>
+        <label>Beskrivning</label>
+        <textarea md-maxlength="200" required name="description" ng-model="review.description"></textarea>
+        <div ng-if="reviewForm.description.$dirty" ng-messages="reviewForm.description.$error">
+          <div ng-message="md-maxlength">Beskrivningen måste vara mindre än 200 tecken.</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Betyg</label>
+        <input type="number" min="0" max="5" required name="rating" ng-model="review.rating"></textarea>
+        <div ng-if="reviewForm.rating.$dirty" ng-messages="reviewForm.rating.$error">
+          <div ng-messages="reviewForm.rating.$error">
+            <div ng-message="required">Detta fält måste fyllas i</div>
+          </div>
+        </div>
+      </md-input-container>
+      <md-button class="md-raised">
+        Skriv
+      </md-button>
+    </form>
+  </md-content>

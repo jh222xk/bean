@@ -1,0 +1,33 @@
+<md-toolbar class="md-theme-light">
+  <h1 class="md-toolbar-tools">
+    <span>Recensioner</span>
+  </h1>
+</md-toolbar>
+<md-content>
+  <md-list>
+    <md-item>
+      <div ng-if="ctrl.reviews.length" class="reviews">
+        <div ng-repeat="review in ctrl.reviews">
+          <md-item-content>
+            <div class="md-tile-content">
+              <div layout="row" layout-align="center center">
+                <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/action/svg/production/ic_grade_24px.svg">
+                </md-icon>
+                <span style="padding-left: 16px;">{{review.rating | number:1}} </span>
+                <span> av {{review.user.username}}</span>
+                <span> {{review.created_at | date:'medium'}}</span>
+                <span flex></span>
+              </div>
+            </div>
+          </md-item-content>
+          <md-content style="padding: 16px">
+            {{review.description}}
+          </md-content>
+          <md-divider></md-divider>
+        </div>
+      </div>
+    </md-item>
+  </md-list>
+</md-content>
+
+<create-review ng-if="ctrl.auth.currentUser"></create-review>

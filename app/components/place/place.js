@@ -22,7 +22,7 @@ class Place {
     console.log(this.longitude);
     return this.api.getPlaces(this.latitude, this.longitude).then(places => {
       this.places = places.data.results;
-      console.log(this.places);
+      //console.log(this.places);
     });
   }
 }

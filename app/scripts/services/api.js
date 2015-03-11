@@ -20,6 +20,16 @@ class Api {
     return this.$http.post(this.url + `/auth/`, {username: data.username, password: data.password});
   }
 
+
+  createReview(coffeehouse, data, key) {
+    this.$http.defaults.headers.common.Authorization = `JWT ${key}`;
+    return this.$http.post(this.url + `/reviews/`, {
+      coffee: coffeehouse,
+      description: data.description,
+      rating: data.rating
+    });
+  }
+
 }
 
 export default angular.module('api', [])

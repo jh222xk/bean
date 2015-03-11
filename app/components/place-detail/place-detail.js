@@ -1,6 +1,6 @@
 'use strict';
 
-import Api from '../../scripts/services/api.js';
+import Review from '../review/review.js';
 
 class PlaceDetail {
   constructor(api) {
@@ -9,15 +9,15 @@ class PlaceDetail {
   }
 
   getPlace() {
-    console.log(this.id);
+    //console.log(this.id);
     return this.api.getPlace(this.id).then(place => {
       this.place = place.data;
-      console.log(this.place);
+      //console.log(this);
     });
   }
 }
 
-export default angular.module('placeDetail', [])
+export default angular.module('placeDetail', [Review.name])
 	.directive('placeDetail', function() {
 		return {
 			templateUrl: 'components/place-detail/place-detail.html',

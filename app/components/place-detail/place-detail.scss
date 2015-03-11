@@ -1,9 +1,12 @@
 place-detail {
+  padding: 8px;
   display: block;
   md-card {
-    background-color: #B18965;
+    background-color: #ffffff;
     width: 100%;
     padding: 8px;
+    box-sizing: border-box;
+    margin: 0;
   }
   a {
     text-decoration: none;
