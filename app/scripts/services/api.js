@@ -8,18 +8,36 @@ class Api {
     this.url = `http://localhost:8000/api/v1`;
   }
 
+  get(path) {
+    let req = {
+      method: 'GET',
+      url: `${this.url}${path}`,
+      headers: {
+        'Content-Type': this.format
+      },
+      params: {
+        key: this.key
+      }
+    };
+    return this.$http(req);
+  }
+
   getPlaces(latitude, longitude) {
-    return this.$http.get(this.url + `/coffeehouses/?key=${this.key}&latitude=${latitude}&longitude=${longitude}&format=${this.format}`);
+    return this.get(`/coffeehouses/?latitude=${latitude}&longitude=${longitude}`);
   }
 
   getPlace(id) {
-    return this.$http.get(this.url + `/coffeehouses/${id}/?key=${this.key}&format=${this.format}`);
+    return this.get(`/coffeehouses/${id}`);
   }
 
   login(data) {
-    return this.$http.post(this.url + `/auth/`, {username: data.username, password: data.password});
+    return this.$http.post(this.url + `/auth/`, {username: data.username, password: data.password}).catch((e) => {
+      if (e.status === 400) {
+        throw false;
+      }
+      return true;
+    });
   }
-
 
   createReview(coffeehouse, data, key) {
     this.$http.defaults.headers.common.Authorization = `JWT ${key}`;

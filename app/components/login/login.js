@@ -17,14 +17,15 @@ class Login {
       targetEvent: ev,
       templateUrl: 'components/login/form.html',
       controller: (scope, $mdDialog) => {
-        scope.closeDialog = () => {
-          $mdDialog.hide();
-        };
+        scope.error = false;
+        scope.closeDialog = () => $mdDialog.hide();
 
         scope.login = (formData) => {
           console.log(formData);
-          this.auth.login(formData).then(function(){
+          this.auth.login(formData).then(function() {
             $mdDialog.hide();
+          }).catch(() => {
+            scope.error = true;
           });
         };
       }
