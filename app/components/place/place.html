@@ -1,8 +1,17 @@
-<div layout="row" layout-wrap layout-align="center center">
+
+  <md-content>
+    <md-autocomplete
+      md-search-text="ctrl.query"
+      md-items="item in []"
+      placeholder="Vad söker du?">
+    </md-autocomplete>
+
+    <div layout="row" layout-wrap layout-align="center start">
+
   <div ng-repeat="place in ctrl.places">
     <a ui-sref="place({ id: place.id })">
       <md-card>
-        <img src="{{place.image}}" alt=""/>
+        <img ng-src="{{place.image}}" alt=""/>
         <md-toolbar class="md-theme-light">
           <h1 class="md-toolbar-tools">
             <span>{{place.name}}</span>
@@ -45,3 +54,4 @@
     </a>
   </div>
 </div>
+</md-content>

@@ -22,16 +22,26 @@ class Api {
     return this.$http(req);
   }
 
-  getPlaces(latitude, longitude) {
-    return this.get(`/coffeehouses/?latitude=${latitude}&longitude=${longitude}`);
+  post(path, data) {
+    let req = {
+      method: 'POST',
+      url: `${this.url}${path}`,
+      data: data
+    };
+    console.log(req);
+    return this.$http(req);
+  }
+
+  getPlaces(query, latitude, longitude) {
+    return this.get(`/coffeehouses/` + '?query=' + encodeURI(query) + `&latitude=${latitude}&longitude=${longitude}`);
   }
 
   getPlace(id) {
-    return this.get(`/coffeehouses/${id}`);
+    return this.get(`/coffeehouses/${id}/`);
   }
 
   login(data) {
-    return this.$http.post(this.url + `/auth/`, {username: data.username, password: data.password}).catch((e) => {
+    return this.post(`/auth/`, {username: data.username, password: data.password}).catch((e) => {
       if (e.status === 400) {
         throw false;
       }
