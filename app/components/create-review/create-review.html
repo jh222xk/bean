@@ -3,22 +3,24 @@
       Skriv recension
     </h1>
   </md-toolbar>
-  <md-content class="md-padding">
-    <form name="reviewForm" ng-submit="reviewForm.$valid && ctrl.createReview(review)" novalidate>
+  <md-content flex>
+    <form name="ctrl.reviewForm" ng-submit="ctrl.reviewForm.$valid && ctrl.createReview(review, ctrl.reviewForm)" novalidate>
       <md-input-container>
         <label>Beskrivning</label>
-        <textarea md-maxlength="200" required name="description" ng-model="review.description"></textarea>
-        <div ng-if="reviewForm.description.$dirty" ng-messages="reviewForm.description.$error">
-          <div ng-message="md-maxlength">Beskrivningen måste vara mindre än 200 tecken.</div>
+        <textarea type="text" name="description" ng-model="review.description" ng-minlength="2" required></textarea>
+        <div ng-messages="ctrl.reviewForm.description.$error" ng-if="ctrl.reviewForm.description.$dirty">
+          <div ng-message="required">Detta fält måste fyllas i</div>
+          <div ng-message="minlength">Måste ha minst 2 tecken</div>
         </div>
       </md-input-container>
       <md-input-container>
         <label>Betyg</label>
-        <input type="number" min="0" max="5" required name="rating" ng-model="review.rating"></textarea>
-        <div ng-if="reviewForm.rating.$dirty" ng-messages="reviewForm.rating.$error">
-          <div ng-messages="reviewForm.rating.$error">
-            <div ng-message="required">Detta fält måste fyllas i</div>
-          </div>
+        <input type="number" min="0" max="5" name="rating" ng-model="review.rating" ng-minlength="1">
+        <div ng-messages="ctrl.reviewForm.rating.$error" ng-if="ctrl.reviewForm.rating.$dirty">
+          <div ng-message="minlength">Detta fält måste fyllas i</div>
+          <div ng-message="max">Max 5</div>
+          <div ng-message="min">Min 0</div>
+          <div ng-message="number">Måste vara en siffra</div>
         </div>
       </md-input-container>
       <md-button class="md-raised">

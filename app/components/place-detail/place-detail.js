@@ -1,5 +1,8 @@
 'use strict';
 
+
+import CreateReview from '../create-review/create-review.js';
+import Auth from '../../scripts/services/auth.js';
 import Review from '../review/review.js';
 
 class PlaceDetail {
@@ -9,15 +12,13 @@ class PlaceDetail {
   }
 
   getPlace() {
-    //console.log(this.id);
     return this.api.getPlace(this.id).then(place => {
       this.place = place.data;
-      //console.log(this);
     });
   }
 }
 
-export default angular.module('placeDetail', [Review.name])
+export default angular.module('placeDetail', [CreateReview.name, Auth.name, Review.name])
 	.directive('placeDetail', function() {
 		return {
 			templateUrl: 'components/place-detail/place-detail.html',

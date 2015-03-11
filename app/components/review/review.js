@@ -1,16 +1,10 @@
 'use strict';
 
-import CreateReview from '../create-review/create-review.js';
-import Auth from '../../scripts/services/auth.js';
-
 class Review {
-	constructor(auth) {
-    this.auth = auth;
-    console.log(this);
-  }
+	constructor() {}
 }
 
-export default angular.module('review', [CreateReview.name, Auth.name])
+export default angular.module('review', [])
 	.directive('review', function() {
 		return {
 			templateUrl: 'components/review/review.html',
