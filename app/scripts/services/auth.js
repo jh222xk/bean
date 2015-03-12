@@ -8,12 +8,12 @@ class Auth {
     this.storage = storage;
     this.currentUser = storage.get('user');
     this.token = storage.get('token');
-    console.log(this.storage);
   }
 
   login(credentials) {
     return this.api.login(credentials).then(({data}) => {
       this.storage.save('token', data.token, Type.Session);
+      this.token = data.token;
       this.storage.save('user', credentials.username, Type.Session);
       this.setCurrentUser(credentials.username);
     });
