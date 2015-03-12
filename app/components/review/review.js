@@ -1,7 +1,19 @@
 'use strict';
 
 class Review {
-	constructor() {}
+	constructor(api, auth) {
+    this.api = api;
+    this.auth = auth;
+    this.edit = false;
+    console.log(this);
+  }
+
+  removeReview(id) {
+    console.log('review deletion');
+    return this.api.deleteReview(id, this.auth.token).then(review => {
+      return this.reload();
+    })
+  }
 }
 
 export default angular.module('review', [])
@@ -16,7 +28,8 @@ export default angular.module('review', [])
 				// = Two way data binding
 				// @ One way incoming expression (like placeholder)
 				// & One way outgoing behaviour (like ng-click)
-        reviews: '='
+        reviews: '=',
+        reload: '&'
 			},
 			bindToController: true,
 			controller: Review ,

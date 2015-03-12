@@ -13,6 +13,7 @@ class PlaceDetail {
   }
 
   getPlace() {
+    console.log('ALSDLASLDLASLD');
     return this.api.getPlace(this.id).then(place => {
       this.place = place.data;
     });

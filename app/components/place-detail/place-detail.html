@@ -38,6 +38,11 @@
   <md-content style="padding: 16px">
     {{item.place.description}}
   </md-content>
-  <review reviews="item.place.reviews"></review>
+  <review reload="item.getPlace()" reviews="item.place.reviews"></review>
+  <md-toolbar class="md-primary">
+    <h1 class="md-toolbar-tools">
+      Skriv recension
+    </h1>
+  </md-toolbar>
   <create-review ng-if="item.auth.currentUser" created="item.getPlace()"></create-review>
 </md-content>
