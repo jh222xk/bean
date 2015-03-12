@@ -1,6 +1,6 @@
 'use strict';
 
-import Storage from '../../scripts/services/storage.js';
+import {default as Storage, Type} from '../../scripts/services/storage.js';
 
 class Auth {
 	constructor(api, storage) {
@@ -8,18 +8,20 @@ class Auth {
     this.storage = storage;
     this.currentUser = storage.get('user');
     this.token = storage.get('token');
+    console.log(this.storage);
   }
 
   login(credentials) {
     return this.api.login(credentials).then(({data}) => {
-      this.storage.save('token', data.token);
-      this.storage.save('user', credentials.username);
+      this.storage.save('token', data.token, Type.Session);
+      this.storage.save('user', credentials.username, Type.Session);
       this.setCurrentUser(credentials.username);
     });
   }
 
   logout() {
     this.storage.remove('user');
+    this.storage.remove('token');
     this.setCurrentUser(null);
   }
 
