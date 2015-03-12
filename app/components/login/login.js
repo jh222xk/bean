@@ -9,7 +9,7 @@ class Login {
   }
 
   isAuthorized(ev) {
-    this.auth.currentUser ? this.auth.logout() : this.showLogin(ev);
+    return this.auth.currentUser ? this.auth.logout() : this.showLogin(ev);
   }
 
   showLogin(ev) {
