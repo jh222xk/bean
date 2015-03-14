@@ -30,7 +30,7 @@ class CreateReview {
         return this.created();
       });
     } else {
-      formData['coffee'] = this.id;
+      formData.coffee = this.id;
       this.api.updateReview(this.old.id, formData, this.auth.token).then(() => {
         this.review.edit = false;
         console.log(this.created());
