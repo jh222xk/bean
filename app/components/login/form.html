@@ -1,29 +1,29 @@
 <md-dialog>
   <md-content>
-    <form name="loginForm" ng-submit="loginForm.$valid" novalidate>
+    <form name="loginForm" ng-submit="login(user)" novalidate>
       <div ng-if="error">Fel användarnamn och/eller lösenord</div>
-      <md-input-container flex>
+      <md-input-container>
         <label>Användarnamn</label>
-        <input type="text" required name="username" ng-model="user.username">
-        <div ng-if="loginForm.username.$dirty" ng-messages="loginForm.username.$error">
-          <div ng-message="required">Fältet får ej vara tomt</div>
+        <input type="text" name="username" ng-model="user.username" ng-minlength="2" required>
+        <div ng-messages="loginForm.username.$error" ng-if="loginForm.username.$dirty">
+          <div ng-message="minlength">Måste ha minst 2 tecken</div>
         </div>
       </md-input-container>
       <md-input-container>
         <label>Lösenord</label>
-        <input type="password" required name="password" ng-model="user.password">
+        <input type="password" name="password" ng-model="user.password" ng-minlength="2" required>
         <div ng-if="loginForm.password.$dirty" ng-messages="loginForm.password.$error">
-          <div ng-message="required">Fältet får ej vara tomt</div>
+          <div ng-message="minlength">Fältet får ej vara tomt</div>
         </div>
       </md-input-container>
+      <div class="md-actions" layout="row">
+        <md-button>
+          Logga in
+        </md-button>
+        <md-button ng-click="closeDialog()" class="md-primary">
+          Stäng
+        </md-button>
+      </div>
     </form>
   </md-content>
-  <div class="md-actions" layout="row">
-    <md-button ng-click="login(user)">
-      Logga in
-    </md-button>
-    <md-button ng-click="closeDialog()" class="md-primary">
-      Stäng
-    </md-button>
-  </div>
 </md-dialog>

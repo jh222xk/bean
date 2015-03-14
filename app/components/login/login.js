@@ -17,23 +17,29 @@ class Login {
       targetEvent: ev,
       templateUrl: 'components/login/form.html',
       controller: (scope, $mdDialog) => {
+        scope.user = {
+          username: null,
+          password: null
+        };
+        scope.loginForm = {};
         scope.error = false;
         scope.closeDialog = () => $mdDialog.hide();
 
         scope.login = (formData) => {
-          console.log(formData);
-          this.auth.login(formData).then(function() {
-            $mdDialog.hide();
-          }).catch(() => {
-            scope.error = true;
-          });
+          if (scope.loginForm.$valid) {
+            this.auth.login(formData).then(function() {
+              $mdDialog.hide();
+            }).catch(() => {
+              scope.error = true;
+            });
+          }
         };
       }
     });
   }
 }
 
-export default angular.module('login', [Auth.name])
+export default angular.module('login', ['ngMessages', Auth.name])
 	.directive('login', function() {
 		return {
 			templateUrl: 'components/login/login.html',
