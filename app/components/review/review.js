@@ -5,14 +5,12 @@ class Review {
     this.api = api;
     this.auth = auth;
     this.edit = false;
-    console.log(this);
   }
 
   removeReview(id) {
-    console.log('review deletion');
-    return this.api.deleteReview(id, this.auth.token).then(review => {
+    return this.api.deleteReview(id, this.auth.token).then(() => {
       return this.reload();
-    })
+    });
   }
 }
 
