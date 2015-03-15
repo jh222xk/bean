@@ -56,7 +56,7 @@ class Api {
   }
 
   getPlaces(query, latitude, longitude) {
-    return this.get(`/coffeehouses/` + '?query=' + encodeURI(query) + `&latitude=${latitude}&longitude=${longitude}`);
+    return this.get(`/coffeehouses/` + '?query=' + query + `&latitude=${latitude}&longitude=${longitude}`);
   }
 
   getPlace(id) {
@@ -89,6 +89,10 @@ class Api {
   updateReview(review, data, jwt) {
     console.log(jwt);
     return this.update(`/reviews/${review}/`, data, jwt);
+  }
+
+  getTags() {
+    return this.get(`/tags/`);
   }
 
 }

@@ -1,14 +1,29 @@
+<md-toolbar scroll-shrink layout="row">
+  <div class="md-toolbar-tools">
+    <a ui-sref="home"><h3>Bean</h3></a>
+    <div layout="row" layout-align="center center" flex>
 
-  <md-content>
-    <md-autocomplete
-      md-search-text="ctrl.query"
-      md-items="item in []"
-      placeholder="Vad söker du?">
-    </md-autocomplete>
+      <md-autocomplete
+        md-search-text="ctrl.query"
+        md-items="item in []"
+        placeholder="Vad söker du?">
+      </md-autocomplete>
+
+      <md-select id="tags" ng-model="tagObj">
+        <md-select-label>{{tagObj.name ? tagObj.name : 'Taggar'}}</md-select-label>
+        <md-option>Alla</md-option>
+        <md-option ng-value="tag" ng-repeat="tag in ctrl.tags">{{tag.name}}</md-option>
+      </md-select>
+    </div>
+
+    <login></login>
+  </div>
+</md-toolbar>
+<md-content>
 
     <div layout="row" layout-wrap layout-align="center start">
 
-  <div ng-repeat="place in ctrl.places">
+  <div ng-repeat="place in ctrl.places | filter: tagObj.name">
     <a ui-sref="place({ id: place.id })">
       <md-card>
         <img ng-src="{{place.image}}" alt=""/>
@@ -49,6 +64,22 @@
         </md-content>
         <md-content style="padding: 16px">
           {{place.description}}
+        </md-content>
+        <md-divider></md-divider>
+        <md-content>
+          <md-list>
+            <md-item>
+              <md-item-content>
+                <div class="md-tile-content">
+                  <div layout="row" layout-align="center center">
+                    <span ng-repeat="tag in place.tags" style="padding-left: 16px;">{{tag.name}}</span>
+                    <span flex></span>
+                  </div>
+                </div>
+              </md-item-content>
+              <md-divider></md-divider>
+            </md-item>
+          </md-list>
         </md-content>
       </md-card>
     </a>

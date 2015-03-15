@@ -1,8 +1,9 @@
 place {
+
   > div {
-    margin: 0 auto;
+
     width: 100%;
-    max-width: 1032px;
+
   }
   md-content {
     height: 100%;
@@ -11,6 +12,7 @@ place {
     //background-color: #B18965;
     background-color: #ffffff;
     max-width: 500px;
+    width: 400px - 16px;
     padding: 8px;
   }
   a {
@@ -22,4 +24,23 @@ place {
     margin: 0;
   }
 
+}
+
+.md-toolbar-tools {
+  md-select {
+    margin: 0 16px 0 0;
+    color: #ffffff !important;
+  }
+  md-autocomplete {
+    margin: 16px;
+    opacity: 1;
+    width: 100%;
+  }
+  md-icon {
+    color: #ffffff;
+  }
+}
+md-select-label {
+  color: #ffffff !important;
+  font-size: 1rem !important;
 }

@@ -7,8 +7,10 @@ class Place {
 	constructor(observeOnScope, $scope, api, storage, $window) {
     this.api = api;
     this.storage = storage;
+    this.tags = [];
     this.getPlaces();
     this.query = '';
+    this.tagObj = {};
 
     $window.navigator.geolocation.getCurrentPosition(location => {
       this.latitude = location.coords.latitude;
@@ -27,6 +29,15 @@ class Place {
     }
     return this.api.getPlaces(this.query, this.latitude, this.longitude).then(places => {
       this.places = places.data.results;
+      this.getTags();
+      console.log(this.places);
+    });
+  }
+
+  getTags() {
+    return this.api.getTags().then(({data}) => {
+      this.tags = data.results;
+      console.log(this.tags);
     });
   }
 }
