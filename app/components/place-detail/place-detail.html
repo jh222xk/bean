@@ -1,48 +1,65 @@
 <md-content>
-  <img src="{{item.place.image}}" alt=""/>
-  <md-toolbar class="md-theme-light">
-    <h1 class="md-toolbar-tools">
-      <span>{{item.place.name}}</span>
-    </h1>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <a ui-sref="home">
+        <md-icon
+          md-svg-src="https://rawgit.com/google/material-design-icons/master/image/svg/production/ic_navigate_before_24px.svg">
+
+        </md-icon>
+      </a>
+      <a ui-sref="home"><span>{{item.place.name}}</span></a>
+      <!-- fill up the space between left and right area -->
+      <span flex></span>
+      <login></login>
+    </div>
   </md-toolbar>
-  <md-content>
-    <md-list>
-      <md-item>
-        <md-item-content>
-          <div class="md-tile-content">
-            <div layout="row" layout-align="center center">
-              <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/action/svg/production/ic_grade_24px.svg">
-              </md-icon>
-              <span style="padding-left: 16px;">{{item.place.rating | number:1}}</span>
-              <span flex></span>
+  <div class="bg-image" style="background: url({{item.place.image}}); background-size: cover;">
+
+  </div>
+  <div class="top-detail">
+    <md-content>
+      <md-list>
+        <md-item>
+          <md-item-content>
+            <div class="md-tile-content">
+              <div layout="row" layout-align="center center">
+                <md-icon
+                  md-svg-src="https://rawgit.com/google/material-design-icons/master/action/svg/production/ic_grade_24px.svg">
+                </md-icon>
+                <span style="padding-left: 16px;">{{item.place.rating | number:1}}</span>
+                <span flex></span>
+              </div>
             </div>
-          </div>
-        </md-item-content>
-        <md-divider></md-divider>
-      </md-item>
-      <md-item>
-        <md-item-content>
-          <div class="md-tile-content">
-            <div layout="row" layout-align="center center">
-              <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/maps/svg/production/ic_place_24px.svg">
-              </md-icon>
-              <span style="padding-left: 16px;">{{item.place.address}}</span>
-              <span flex></span>
+          </md-item-content>
+          <md-divider></md-divider>
+        </md-item>
+        <md-item>
+          <md-item-content>
+            <div class="md-tile-content">
+              <div layout="row" layout-align="center center">
+                <md-icon
+                  md-svg-src="https://rawgit.com/google/material-design-icons/master/maps/svg/production/ic_place_24px.svg">
+                </md-icon>
+                <span style="padding-left: 16px;">{{item.place.address}}</span>
+                <span flex></span>
+              </div>
             </div>
-          </div>
-        </md-item-content>
-        <md-divider></md-divider>
-      </md-item>
-    </md-list>
-  </md-content>
-  <md-content style="padding: 16px">
-    {{item.place.description}}
-  </md-content>
+          </md-item-content>
+          <md-divider></md-divider>
+        </md-item>
+      </md-list>
+    </md-content>
+    <md-content style="padding: 16px">
+      {{item.place.description}}
+    </md-content>
+  </div>
   <review reload="item.getPlace()" reviews="item.place.reviews"></review>
-  <md-toolbar class="md-primary">
-    <h1 class="md-toolbar-tools">
-      Skriv recension
-    </h1>
-  </md-toolbar>
-  <create-review ng-if="item.auth.currentUser" created="item.getPlace()"></create-review>
+  <div ng-if="item.auth.currentUser">
+    <md-toolbar class="md-primary">
+      <h1 class="md-toolbar-tools">
+        Skriv recension
+      </h1>
+    </md-toolbar>
+    <create-review created="item.getPlace()"></create-review>
+  </div>
 </md-content>
