@@ -6,6 +6,22 @@ html, body {
   width: 100%;
 }
 
+.info-window {
+  /*min-height: 80px;*/
+  height: auto !important;
+  min-height: 100% !important;
+}
+
+.gm-style-iw {
+  height: auto !important;
+}
+
+.gm-style-iw > div {
+  height: auto !important;
+  min-height: 100% !important;
+  padding-bottom: .5em;
+}
+
 .hidden {
   display: none !important;
 }

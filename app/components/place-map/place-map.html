@@ -1,3 +1,14 @@
 <ui-gmap-google-map center="ctrl.map.center" zoom="ctrl.map.zoom">
-  <ui-gmap-markers models="ctrl.places" idkey='id' coords="'position'" fit="'true'" modelsbyref="true"></ui-gmap-markers>
+  <ui-gmap-markers models="ctrl.places" idkey='id' coords="'position'" fit="'true'" modelsbyref="true">
+    <ui-gmap-windows models="ctrl.places.position" idkey='id' show="show">
+      <div ng-non-bindable>
+        <div class="info-window">
+          <h4>{{name}}</h4>
+        <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/action/svg/production/ic_grade_24px.svg">
+        </md-icon>
+        {{rating|number:1}}
+        </div>
+      </div>
+    </ui-gmap-windows>
+  </ui-gmap-markers>
 </ui-gmap-google-map>
