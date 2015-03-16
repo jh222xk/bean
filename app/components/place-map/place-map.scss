@@ -1,0 +1,26 @@
+place-map {
+  visibility: hidden;
+  height: 0;
+  transform: scale(0);
+  transition: all .2s ease-in-out;
+  &.ng-open-remove {
+    transform: scale(0);
+    visibility: inherit !important;
+    height: 100vh;
+  }
+  &.open {
+    visibility: inherit;
+    height: 100vh;
+    z-index: 5;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transition: transform 0.2s linear;
+    transform: scale(1);
+  }
+  .angular-google-map-container {
+    height: 100vh;
+  }
+}

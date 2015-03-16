@@ -1,20 +1,15 @@
 'use strict';
 
-class FabMenu {
+class PlaceMap {
 	constructor() {
-    this.open = false;
+    this.map = {center: { latitude: 0.0, longitude: 0.0}, zoom: 13};
   }
-
-  toggleMenu() {
-    this.open = !this.open;
-  }
-
 }
 
-export default angular.module('fabMenu', [])
-	.directive('fabMenu', function() {
+export default angular.module('placeMap', ['uiGmapgoogle-maps'])
+	.directive('placeMap', function() {
 		return {
-			templateUrl: 'components/fab-menu/fab-menu.html',
+			templateUrl: 'components/place-map/place-map.html',
 			restrict: 'E',
 			scope: {
 				// Specify attributes where parents can pass and receive data here
@@ -23,10 +18,11 @@ export default angular.module('fabMenu', [])
 				// = Two way data binding
 				// @ One way incoming expression (like placeholder)
 				// & One way outgoing behaviour (like ng-click)
-        mapOpen: '&'
+        places: '=',
+        mapOpen: '='
 			},
 			bindToController: true,
-			controller: FabMenu ,
+			controller: PlaceMap ,
 			controllerAs: 'ctrl'
 		};
 	});

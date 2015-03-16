@@ -1,5 +1,4 @@
 fab-menu {
-  display: block;
   &.md-fab-menu-bottom-right {
     top: auto;
     right: 20px;
@@ -19,8 +18,8 @@ fab-menu {
     position: absolute;
     z-index: 19;
     bottom: 0;
-    margin: 0 0 4em 0;
-    height: 100%;
+    //margin: 0 0 4em 0;
+    //height: 100%;
     padding: 0;
     transform: translate3d(0px, 0px, 0px);
     transition: transform 180ms, opacity 180ms;
@@ -32,7 +31,7 @@ fab-menu {
     &.open {
       //display: block;
       opacity: 1;
-      transform: translate3d(0px, -80px, 0px);
+      transform: translate3d(0px, -40px, 0px);
       .md-button.md-fab {
         //animation-name: bounce;
         //animation-duration: 0.2s;
@@ -62,7 +61,7 @@ fab-menu {
     }
   }
   md-icon {
-    color: #ffffff;
+    color: #ffffff !important;
   }
 
   md-button, .close-icon {
@@ -89,12 +88,12 @@ fab-menu {
     //border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.5);/*rgba(255,255,255,0.7);*/
     -webkit-transform: scale(0.01);
-    transform: scale(0.01);
     transform: scale(0);
     transition: opacity 250ms, transform 0.1s linear;
     z-index: 2;
     opacity: 0;
     overflow: hidden;
+    display: none;
     &.open {
       opacity: 1;
       transform: scale(2);

@@ -1,4 +1,4 @@
-<md-toolbar scroll-shrink layout="row">
+<md-toolbar layout="row">
   <div class="md-toolbar-tools">
     <a ui-sref="home"><h3>Bean</h3></a>
     <div layout="row" layout-align="center center" flex>
@@ -19,7 +19,7 @@
     <login></login>
   </div>
 </md-toolbar>
-<md-content>
+<md-content class="layout">
 
     <div layout="row" layout-wrap layout-align="center start">
 
@@ -86,3 +86,6 @@
   </div>
 </div>
 </md-content>
+
+<place-map ng-if="ctrl.places" places="ctrl.places" ng-class="{open:ctrl.mapOpen}"></place-map>
+<fab-menu map-open="ctrl.toggleMap()" class="md-fab-menu-bottom-right"></fab-menu>

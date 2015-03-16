@@ -1,18 +1,16 @@
 <div class="overlay" ng-class="{open:ctrl.open}" ng-click="ctrl.toggleMenu()"></div>
 
 <md-button class="md-fab main" ng-click="ctrl.toggleMenu()" ng-class="{open:ctrl.open}" aria-label="FAB">
-
   <md-icon ng-class="{open:ctrl.open}" class="close-icon" md-svg-src="https://rawgit.com/google/material-design-icons/master/navigation/svg/production/ic_close_24px.svg"></md-icon>
 </md-button>
 
 <ul ng-class="{open:ctrl.open}">
+
   <md-button class="md-fab grade" aria-label="FAB">
     <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/action/svg/production/ic_grade_24px.svg"></md-icon>
   </md-button>
-  <!--<div class="fab-menu-label">Skriv recension</div>-->
 
-  <md-button class="md-fab person" aria-label="FAB">
-    <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/social/svg/production/ic_person_24px.svg"></md-icon>
+  <md-button class="md-fab person" ng-click="ctrl.mapOpen()" aria-label="Karta">
+    <md-icon md-svg-src="https://rawgit.com/google/material-design-icons/master/maps/svg/production/ic_map_24px.svg"></md-icon>
   </md-button>
-  <!--<div class="fab-menu-label">Logga in</div>-->
 </ul>

@@ -1,12 +1,19 @@
 $primaryBG: #388E3C;
 
-html {
+html, body {
   background-color: #D5C1A9;
+  height: 100%;
+  width: 100%;
+}
+
+.hidden {
+  display: none !important;
 }
 
 md-content.md-default-theme {
   background-color: #D5C1A9;
   //height: 100%;
+  //width:100%;
 }
 
 .headline {

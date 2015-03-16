@@ -1,12 +1,18 @@
 place {
-
+  height: 100vh;
+  display: block;
+  overflow:hidden;
   > div {
 
     width: 100%;
 
   }
-  md-content {
-    height: 100%;
+  md-content.layout {
+    //height: 100%;
+    height: calc(100vh - 64px);
+    > div {
+      height: calc(100vh - 64px);
+    }
   }
   md-card {
     //background-color: #B18965;
@@ -14,6 +20,13 @@ place {
     max-width: 500px;
     width: 400px - 16px;
     padding: 8px;
+    -webkit-transition-delay: 200ms;
+    transition-delay: 200ms;
+
+    -webkit-transform: none;
+    transform: none;
+
+    opacity: 1;
   }
   a {
     text-decoration: none;

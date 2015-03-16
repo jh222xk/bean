@@ -10,14 +10,19 @@ class PlaceDetail {
     this.api = api;
     this.auth = auth;
     this.getPlace();
+    this.mapOpen = false;
   }
 
   getPlace() {
-    console.log('ALSDLASLDLASLD');
     return this.api.getPlace(this.id).then(place => {
       this.place = place.data;
     });
   }
+
+  toggleMap() {
+    this.mapOpen = !this.mapOpen;
+  }
+
 }
 
 export default angular.module('placeDetail', [Auth.name, Review.name, CreateReview.name])

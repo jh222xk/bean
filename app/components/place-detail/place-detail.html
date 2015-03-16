@@ -1,4 +1,4 @@
-<md-content>
+<md-content class="layout">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <a ui-sref="home">
@@ -63,3 +63,6 @@
     <create-review created="item.getPlace()"></create-review>
   </div>
 </md-content>
+
+<place-map places="[item.place]" ng-class="{open:item.mapOpen}"></place-map>
+<fab-menu map-open="item.toggleMap()" class="md-fab-menu-bottom-right"></fab-menu>

@@ -1,8 +1,12 @@
 place-detail {
+  height: 100vh;
   display: block;
-  height: 101%;
-  margin: 0 auto;
-  width: auto;
+  overflow:hidden;
+  md-content.layout {
+    //height: 100%;
+    height: 100vh;
+
+  }
   .bg-image{
     height: 250px;
     width: 100%;
