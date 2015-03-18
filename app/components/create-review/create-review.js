@@ -23,12 +23,15 @@ class CreateReview {
   createReview(formData) {
     console.log(this);
     if (!this.old) {
-      this.api.createReview(this.id, formData, this.auth.token).then(() => {
-        this.reviewForm.$setPristine();
-        this.review.description = '';
-        this.review.rating = 0;
-        return this.created();
-      });
+      if (this.reviewForm.$valid) {
+        this.api.createReview(this.id, formData, this.auth.token).then(() => {
+          this.reviewForm.$setPristine();
+          this.reviewForm.$setUntouched();
+          this.review.description = '';
+          this.review.rating = 0;
+          return this.created();
+        });
+      }
     } else {
       formData.coffee = this.id;
       this.api.updateReview(this.old.id, formData, this.auth.token).then(() => {

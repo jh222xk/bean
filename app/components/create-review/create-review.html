@@ -10,8 +10,9 @@
       </md-input-container>
       <md-input-container>
         <label>Betyg</label>
-        <input type="number" min="0" max="5" name="rating" ng-model="ctrl.review.rating" ng-minlength="1">
+        <input type="number" min="0" max="5" name="rating" ng-model="ctrl.review.rating" ng-minlength="1" required>
         <div ng-messages="ctrl.reviewForm.rating.$error" ng-if="ctrl.reviewForm.rating.$dirty">
+          <div ng-message="required">Detta fält måste fyllas i</div>
           <div ng-message="minlength">Detta fält måste fyllas i</div>
           <div ng-message="max">Max 5</div>
           <div ng-message="min">Min 0</div>
