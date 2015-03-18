@@ -6,16 +6,20 @@ import Auth from '../../scripts/services/auth.js';
 import Review from '../review/review.js';
 
 class PlaceDetail {
-  constructor(api, auth) {
+  constructor(api, auth, $state) {
     this.api = api;
     this.auth = auth;
     this.getPlace();
     this.mapOpen = false;
+    this.$state = $state;
   }
 
   getPlace() {
     return this.api.getPlace(this.id).then(place => {
       this.place = place.data;
+    }).catch(() => {
+      console.log(this.$state);
+      this.$state.go('home');
     });
   }
 

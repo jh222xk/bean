@@ -1,11 +1,14 @@
 'use strict';
 
+import {default as Storage, Type, Time} from '../../scripts/services/storage.js';
+
 class Api {
-	constructor($http) {
+	constructor($http, storage) {
     this.$http = $http;
     this.format = 'json';
     this.key = 'faa8b00f6250385c555eca4b0bbfe27932d133c6';
     this.url = `http://128.199.44.244:1337/api/v1`;
+    this.storage = storage;
   }
 
   get(path) {
@@ -55,12 +58,30 @@ class Api {
     return this.$http(req);
   }
 
-  getPlaces(query, latitude, longitude) {
-    return this.get(`/coffeehouses/` + '?query=' + query + `&latitude=${latitude}&longitude=${longitude}`);
+  getPlaces(query, latitude, longitude, search = false) {
+    let cachedData = this.storage.get('places', Type.Local);
+    if (cachedData && new Date().getTime() - new Date(cachedData.timestamp) < Time.TEN_MIN && search === false) {
+      let obj = {};
+      obj.data = {};
+      obj.data.results = cachedData.data;
+      return Promise.resolve(obj);
+
+    } else {
+      console.log(`/coffeehouses/` + '?query=' + query + `&latitude=${latitude}&longitude=${longitude}`);
+      return this.get(`/coffeehouses/` + '?query=' + query + `&latitude=${latitude}&longitude=${longitude}`).then((data) => {
+        this.storage.save('places', data.data.results, Type.Local);
+        return data;
+      });
+    }
   }
 
   getPlace(id) {
-    return this.get(`/coffeehouses/${id}/`);
+    return this.get(`/coffeehouses/${id}/`).catch((e) => {
+      if(e.status === 404) {
+        throw false;
+      }
+      return true;
+    });
   }
 
   login(data) {
@@ -97,5 +118,5 @@ class Api {
 
 }
 
-export default angular.module('api', [])
+export default angular.module('api', [Storage.name])
 	.service('api', Api);

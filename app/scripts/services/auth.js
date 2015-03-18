@@ -6,8 +6,8 @@ class Auth {
 	constructor(api, storage) {
     this.api = api;
     this.storage = storage;
-    this.currentUser = storage.get('user');
-    this.token = storage.get('token');
+    this.currentUser = storage.get('user', Type.Session);
+    this.token = storage.get('token', Type.Session);
   }
 
   login(credentials) {

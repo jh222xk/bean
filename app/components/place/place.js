@@ -1,44 +1,46 @@
 'use strict';
 
 import Api from '../../scripts/services/api.js';
-import Storage from '../../scripts/services/storage.js';
 import PlaceMap from '../place-map/place-map.js';
 
 class Place {
-	constructor(observeOnScope, $scope, api, storage, $window) {
+	constructor(observeOnScope, $scope, $timeout, api, $window) {
     this.api = api;
-    this.storage = storage;
     this.tags = [];
     this.query = null;
     this.tagObj = {};
     this.mapOpen = false;
     this.getTags();
+    this.$scope = $scope;
+    this.$timeout = $timeout;
 
     observeOnScope($scope, 'ctrl.query').skip(2).debounce(250).subscribe(() => {
-      this.getPlaces();
+      if (this.query !== null || this.query !== '') {
+        this.getPlaces(true);
+      }
     });
 
     $window.navigator.geolocation.getCurrentPosition(location => {
       this.latitude = location.coords.latitude;
       this.longitude = location.coords.longitude;
       this.getPlaces();
-      console.log(this);
     });
+
   }
 
   toggleMap() {
     this.mapOpen = !this.mapOpen;
   }
 
-  getPlaces() {
-    console.log(this.latitude);
-    console.log('HÄMTAR PLACES');
+  getPlaces(search = false) {
     if (this.query === null) {
       this.query = '';
     }
 
-    return this.api.getPlaces(this.query, this.latitude, this.longitude).then(({data}) => {
-      this.places = data.results;
+    this.api.getPlaces(this.query, this.latitude, this.longitude, search).then(({data}) => {
+      this.$timeout(() => {
+        this.places = data.results;
+      }, 0);
     });
   }
 
@@ -49,7 +51,7 @@ class Place {
   }
 }
 
-export default angular.module('place', ['rx', Api.name, Storage.name, PlaceMap.name])
+export default angular.module('place', ['rx', Api.name, PlaceMap.name])
 	.directive('place', function() {
 		return {
 			templateUrl: 'components/place/place.html',
