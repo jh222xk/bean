@@ -61,15 +61,13 @@ class Api {
   getPlaces(query, latitude, longitude, search = false) {
     let cachedData = this.storage.get('places', Type.Local);
     if (cachedData && new Date().getTime() - new Date(cachedData.timestamp) < Time.TEN_MIN && search === false) {
-      let obj = {};
-      obj.data = {};
-      obj.data.results = cachedData.data;
+      let obj = { data: {results: cachedData.data } };
       return Promise.resolve(obj);
-
     } else {
-      console.log(`/coffeehouses/` + '?query=' + query + `&latitude=${latitude}&longitude=${longitude}`);
       return this.get(`/coffeehouses/` + '?query=' + query + `&latitude=${latitude}&longitude=${longitude}`).then((data) => {
-        this.storage.save('places', data.data.results, Type.Local);
+        if (search === false) {
+          this.storage.save('places', data.data.results, Type.Local);
+        }
         return data;
       });
     }
@@ -94,7 +92,6 @@ class Api {
   }
 
   createReview(coffeehouse, data, key) {
-    //console.log(key);
     this.$http.defaults.headers.common.Authorization = `JWT ${key}`;
     return this.$http.post(this.url + `/reviews/`, {
       coffee: coffeehouse,

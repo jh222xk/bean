@@ -24,6 +24,8 @@ class Place {
       this.latitude = location.coords.latitude;
       this.longitude = location.coords.longitude;
       this.getPlaces();
+    }, () => {
+      this.getPlaces();
     });
 
   }
