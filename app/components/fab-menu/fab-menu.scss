@@ -39,8 +39,14 @@ fab-menu {
         //right: 40px;
         background-color: #69F0AE;
         margin-bottom: 1em;
-        &.person {
+        &.map {
           background-color: #607D8B;
+          &:hover {
+            background-color: #455A64;
+          }
+          &:focus {
+            background-color: #455A64;
+          }
         }
         &.grade {
           background-color: #FFD600;
