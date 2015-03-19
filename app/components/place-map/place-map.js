@@ -2,7 +2,9 @@
 
 class PlaceMap {
 	constructor() {
-    this.map = {center: { latitude: 0.0, longitude: 0.0}, zoom: 13};
+    this.map = {center: { latitude: 0.0, longitude: 0.0}, zoom: 13, options: {
+      minZoom: 2
+    }};
   }
 }
 
