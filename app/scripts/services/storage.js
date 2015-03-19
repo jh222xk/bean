@@ -25,7 +25,7 @@ class Storage {
   }
 
   /**
-   *
+   * Set item in the given type of storage
    * @param id
    * @param data
    * @param type

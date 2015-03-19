@@ -119,7 +119,7 @@ class Api {
   }
 
   /**
-   *
+   * Login a user with the given credentials
    * @param data
    * @returns {*}
    */
@@ -133,7 +133,7 @@ class Api {
   }
 
   /**
-   * Create a review bound to a given coffehouse
+   * Create a review bound to a given coffeehouse
    * @param coffeehouse
    * @param data
    * @param key
