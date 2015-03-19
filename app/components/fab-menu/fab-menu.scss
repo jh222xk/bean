@@ -18,8 +18,6 @@ fab-menu {
     position: absolute;
     z-index: 19;
     bottom: 0;
-    //margin: 0 0 4em 0;
-    //height: 100%;
     padding: 0;
     transform: translate3d(0px, 0px, 0px);
     transition: transform 180ms, opacity 180ms;
@@ -29,14 +27,9 @@ fab-menu {
 
     }
     &.open {
-      //display: block;
       opacity: 1;
       transform: translate3d(0px, -40px, 0px);
       .md-button.md-fab {
-        //animation-name: bounce;
-        //animation-duration: 0.2s;
-        //transform-origin: center bottom;
-        //right: 40px;
         background-color: #69F0AE;
         margin-bottom: 1em;
         &.map {
@@ -55,11 +48,6 @@ fab-menu {
           }
         }
 
-      }
-      div {
-        //margin-bottom: 5em !important;
-        //height: 100%;
-        //width: 100%;
       }
     }
     li {
@@ -88,11 +76,9 @@ fab-menu {
     left: 45%;
     position: fixed;
     bottom: 0;
-
     height: 100%;
     width: 100%;
-    //border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.5);/*rgba(255,255,255,0.7);*/
+    background-color: rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(0.01);
     transform: scale(0);
     transition: opacity 250ms, transform 0.1s linear;

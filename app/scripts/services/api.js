@@ -11,6 +11,11 @@ class Api {
     this.storage = storage;
   }
 
+  /**
+   * Setup for get request
+   * @param path
+   * @returns {*}
+   */
   get(path) {
     let req = {
       method: 'GET',
@@ -25,16 +30,27 @@ class Api {
     return this.$http(req);
   }
 
+  /**
+   * Setup for post request
+   * @param path
+   * @param data
+   * @returns {*}
+   */
   post(path, data) {
     let req = {
       method: 'POST',
       url: `${this.url}${path}`,
       data: data
     };
-    console.log(req);
     return this.$http(req);
   }
 
+  /**
+   * Setup for delete request
+   * @param path
+   * @param jwt
+   * @returns {*}
+   */
   delete(path, jwt) {
     let req = {
       method: 'DELETE',
@@ -46,6 +62,13 @@ class Api {
     return this.$http(req);
   }
 
+  /**
+   * Setup for the update request
+   * @param path
+   * @param data
+   * @param jwt
+   * @returns {*}
+   */
   update(path, data, jwt) {
     let req = {
       method: 'PUT',
@@ -58,6 +81,14 @@ class Api {
     return this.$http(req);
   }
 
+  /**
+   * Get all places depending on the given params
+   * @param query
+   * @param latitude
+   * @param longitude
+   * @param search
+   * @returns {*}
+   */
   getPlaces(query, latitude, longitude, search = false) {
     let cachedData = this.storage.get('places', Type.Local);
     if (cachedData && new Date().getTime() - new Date(cachedData.timestamp) < Time.TEN_MIN && search === false) {
@@ -73,6 +104,11 @@ class Api {
     }
   }
 
+  /**
+   * Get a single place
+   * @param id
+   * @returns {*}
+   */
   getPlace(id) {
     return this.get(`/coffeehouses/${id}/`).catch((e) => {
       if(e.status === 404) {
@@ -82,6 +118,11 @@ class Api {
     });
   }
 
+  /**
+   *
+   * @param data
+   * @returns {*}
+   */
   login(data) {
     return this.post(`/auth/`, {username: data.username, password: data.password}).catch((e) => {
       if (e.status === 400) {
@@ -91,6 +132,13 @@ class Api {
     });
   }
 
+  /**
+   * Create a review bound to a given coffehouse
+   * @param coffeehouse
+   * @param data
+   * @param key
+   * @returns {*}
+   */
   createReview(coffeehouse, data, key) {
     this.$http.defaults.headers.common.Authorization = `JWT ${key}`;
     return this.$http.post(this.url + `/reviews/`, {
@@ -100,15 +148,31 @@ class Api {
     });
   }
 
+  /**
+   * Deletes a given review
+   * @param review
+   * @param jwt
+   * @returns {*}
+   */
   deleteReview(review, jwt) {
     return this.delete(`/reviews/${review}/`, jwt);
   }
 
+  /**
+   * Updates a given review
+   * @param review
+   * @param data
+   * @param jwt
+   * @returns {*}
+   */
   updateReview(review, data, jwt) {
-    console.log(jwt);
     return this.update(`/reviews/${review}/`, data, jwt);
   }
 
+  /**
+   * Get all tags
+   * @returns {*}
+   */
   getTags() {
     return this.get(`/tags/`);
   }

@@ -8,24 +8,20 @@ place {
 
   }
   md-content.layout {
-    //height: 100%;
     height: calc(100vh - 64px);
     > div {
       height: calc(100vh - 64px);
     }
   }
   md-card {
-    //background-color: #B18965;
     background-color: #ffffff;
     max-width: 500px;
     width: 400px - 16px;
     padding: 8px;
     -webkit-transition-delay: 200ms;
     transition-delay: 200ms;
-
     -webkit-transform: none;
     transform: none;
-
     opacity: 1;
   }
   a {

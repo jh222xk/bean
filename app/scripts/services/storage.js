@@ -17,9 +17,7 @@ export const Time = {
   TEN_MIN: (10 * 60 * 1000)
 };
 
-/**
- *
- */
+
 class Storage {
 	constructor($window) {
     this.sessionStorage = $window.sessionStorage;
@@ -50,7 +48,7 @@ class Storage {
   }
 
   /**
-   *
+   * Get's data from the given storage
    * @param id
    * @param type
    * @returns {*}

@@ -21,7 +21,6 @@ class CreateReview {
   }
 
   createReview(formData) {
-    console.log(this);
     if (!this.old) {
       if (this.reviewForm.$valid) {
         this.api.createReview(this.id, formData, this.auth.token).then(() => {
@@ -36,7 +35,6 @@ class CreateReview {
       formData.coffee = this.id;
       this.api.updateReview(this.old.id, formData, this.auth.token).then(() => {
         this.review.edit = false;
-        console.log(this.created());
         return this.created();
       });
 

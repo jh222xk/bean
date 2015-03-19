@@ -18,7 +18,6 @@ class PlaceDetail {
     return this.api.getPlace(this.id).then(place => {
       this.place = place.data;
     }).catch(() => {
-      console.log(this.$state);
       this.$state.go('home');
     });
   }

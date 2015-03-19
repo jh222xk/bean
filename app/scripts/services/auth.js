@@ -10,6 +10,11 @@ class Auth {
     this.token = storage.get('token', Type.Session);
   }
 
+  /**
+   * Login a given user and set data into sessionStorage.
+   * @param credentials
+   * @returns {*}
+   */
   login(credentials) {
     return this.api.login(credentials).then(({data}) => {
       this.storage.save('token', data.token, Type.Session);
@@ -19,6 +24,9 @@ class Auth {
     });
   }
 
+  /**
+   * Logouts the current user
+   */
   logout() {
     this.storage.remove('user');
     this.storage.remove('token');

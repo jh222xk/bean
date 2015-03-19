@@ -3,9 +3,7 @@ place-detail {
   display: block;
   overflow:hidden;
   md-content.layout {
-    //height: 100%;
     height: 100vh;
-
   }
   .bg-image{
     height: 250px;
@@ -16,7 +14,6 @@ place-detail {
       height: 300px;
     }
     max-height: inherit;
-
   }
   .top-detail {
     display: inline-block;
