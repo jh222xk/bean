@@ -17,6 +17,9 @@ You need to have npm installed and when you have just run `npm install`
 then run `bower install` (If you get something like `Unable to find a suitable version for...`
 always choose 1.4 (and is required by bean).
 
+If you run into troubles with gulp or bower, try installing them globally as follows:
+`npm install gulp -g`, `npm install -g bower`. 
+
 ## Run it
 Just run: `gulp serve` and a server will listen to `http://localhost:3000`
 
