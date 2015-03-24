@@ -13,6 +13,7 @@ class Place {
     this.getTags();
     this.$scope = $scope;
     this.$timeout = $timeout;
+    this.loading = true;
 
     observeOnScope($scope, 'ctrl.query').skip(2).debounce(250).subscribe(() => {
       if (this.query !== null || this.query !== '') {
@@ -42,6 +43,7 @@ class Place {
     this.api.getPlaces(this.query, this.latitude, this.longitude, search).then(({data}) => {
       this.$timeout(() => {
         this.places = data.results;
+        this.loading = false;
       }, 0);
     });
   }

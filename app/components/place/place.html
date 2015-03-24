@@ -23,7 +23,7 @@
 
     <div layout="row" layout-wrap layout-align="center start">
 
-  <div ng-repeat="place in ctrl.places | filter: tagObj.name">
+  <div ng-repeat="place in values = (ctrl.places| filter: tagObj.name)">
     <a ui-sref="place({ id: place.id })">
       <md-card>
         <img ng-src="{{place.image}}" alt=""/>
@@ -84,7 +84,11 @@
       </md-card>
     </a>
   </div>
-</div>
+      <div ng-if="ctrl.loading">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      </div>
+      <p ng-show="!values.length && !ctrl.loading">Hittade inga caféer... Vänligen sök på något annat eller välj en annan tagg.</p>
+      </div>
 </md-content>
 
 <place-map ng-if="ctrl.places" places="ctrl.places" ng-class="{open:ctrl.mapOpen}"></place-map>
